@@ -1,0 +1,34 @@
+1. Kurulum Ön Gereksinimler
+Funnel WS Enterprise, aşağıdaki sistem gereksinimlerine ihtiyaç duyar:
+
+Bileşen	Minimum Gereksinimler	Önerilen Gereksinimler
+İşletim Sistemi	Linux (Debian/Ubuntu), macOS, Windows WSL	Linux (Ubuntu 20.04+)
+Python	Python 3.8+	Python 3.9+
+RAM	4 GB	8 GB+ (Büyük taramalar için)
+Depolama	10 GB boş alan	20 GB+ (Veritabanı ve raporlar için)
+Ağ	İnternet bağlantısı (API ve güncelleme)	100 Mbps+ hız
+
+installer run:
+chmod +x install.sh
+sudo ./install.sh
+
+requıntment install:
+pip install -r requirements.txt
+
+3.1. Temel Komutlar
+Komut	Açıklama
+funnel --help	Tüm komutları gösterir
+funnel scan <URL>	Standart tarama yapar
+funnel scan --deep <URL>	Derinlemesine tarama (OWASP ZAP benzeri)
+funnel scan --fast <URL>	Hızlı tarama (Temel kontroller)
+funnel scan --level 3 <URL>	Seviyeli tarama (1-4 arası)
+funnel scan --cloud aws <URL>	AWS üzerinde bulut tabanlı tarama
+funnel report generate	Önceki taramaların raporunu oluşturur
+funnel gui	Grafik arayüzü başlatır (PyQt5 gerektirir)
+
+5. Sorun Giderme
+Sorun	Çözüm
+Python modülü bulunamadı	pip install -r requirements.txt
+Redis bağlantı hatası	sudo systemctl restart redis-server
+AWS kimlik doğrulama hatası	aws configure ile API anahtarlarını ayarlayın
+GUI çalışmıyor	PyQt5 kurulu olduğundan emin olun (pip install PyQt5)
